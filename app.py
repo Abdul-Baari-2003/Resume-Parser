@@ -41,7 +41,6 @@ def extract_info(text, filename=""):
             name = line.strip()
             break
 
-   
     if not name and filename:
         cleaned = re.sub(r'[_\-\.]', ' ', filename.rsplit('.', 1)[0])
         words = cleaned.split()
@@ -65,7 +64,8 @@ def extract_info(text, filename=""):
         "name": name.title() if name else "",
         "email": email[0] if email else "",
         "phone": phone[0] if phone else "",
-        "skills": ', '.join(found_skills) if found_skills else ""
+        "skills": ', '.join(found_skills) if found_skills else "",
+        "filename": filename
     }
 
 # Calculate ATS Score of Resume

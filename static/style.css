@@ -1,15 +1,17 @@
-/* Pre-made color variables */
+/* Pre-made color variables for darkish mode */
 :root {
-  --primary-color: #007bff;
-  --secondary-color: #0056b3;
-  --text-color: #333;
-  --light-text-color: #555;
-  --background-color: #f4f4f9;
-  --card-background-color: #ffffff;
-  --light-gray: #f9f9f9;
-  --border-color: #ddd;
-  --success-color: #28a745;
-  --danger-color: #dc3545;
+  --primary-color: #00b4d8; /* Bright blue */
+  --secondary-color: #0087a7; /* Darker blue */
+  --accent-color: #7209b7; /* Purple */
+  --dark-accent: #5a0a8d; /* Darker purple */
+  --text-color: #e0e0e0; /* Light text */
+  --light-text-color: #b0b0b0; /* Slightly lighter text */
+  --background-color: #1a1a2e; /* Dark blue-black */
+  --card-background-color: #16213e; /* Darker blue */
+  --card-inner-background: #252a41; /* Even darker for inner cards */
+  --border-color: #4a6fa5; /* Blue-gray border */
+  --success-color: #b5179e; /* Purple for ATS */
+  --danger-color: #ff6f61; /* Red for low ATS */
 }
 
 body {
@@ -19,7 +21,7 @@ body {
   padding: 0;
   display: flex;
   justify-content: center;
-  align-items: flex-start; 
+  align-items: flex-start;
   min-height: 100vh;
 }
 
@@ -28,18 +30,27 @@ body {
   background-color: var(--card-background-color);
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   width: 100%;
-  max-width: 1200px; 
+  max-width: 1200px;
   box-sizing: border-box;
-  margin-top: 2rem; 
+  margin-top: 2rem;
 }
 
 /* Styling for heading tag */
 h1 {
   text-align: center;
-  color: var(--text-color);
+  color: var(--primary-color);
   margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 2px var(--accent-color);
+}
+
+h2 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
 }
 
 /* Styling for label element */
@@ -55,52 +66,104 @@ input[type="file"] {
   display: block;
   width: 100%;
   margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: var(--card-inner-background);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-color);
 }
 
 /* Button element styling */
 button {
   width: 100%;
   padding: 0.75rem;
-  background-color: var(--primary-color);
+  background-color: var(--accent-color);
   border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 0.5rem 0;
+}
+
+button:hover {
+  background-color: var(--dark-accent);
+  transform: translateY(-2px);
+}
+
+/* Search container styling */
+#search-container {
+  margin: 1rem 0;
+  display: flex;
+  gap: 0.5rem;
+}
+
+#skill-search {
+  flex-grow: 1;
+  padding: 0.5rem;
+  background-color: var(--card-inner-background);
+  border: 1px solid var(--border-color);
+  border-radius: 8px 0 0 8px;
+  color: var(--text-color);
+}
+
+#search-btn {
+  flex-grow: 0;
+  width: auto;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  border-radius: 0 8px 8px 0;
+}
+
+#search-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Sort controls styling */
+#sort-controls {
+  margin: 1rem 0;
+}
+
+#sort-controls button {
+  padding: 0.5rem 1rem;
+  background-color: var(--accent-color);
+  border: 1px solid var(--dark-accent);
   border-radius: 8px;
   color: #fff;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background-color: var(--secondary-color);
+#sort-controls button:hover {
+  background-color: var(--dark-accent);
 }
 
 /* Result card container storing resume cards */
 .result-card {
   margin-top: 2rem;
-  display: flex;
-  flex-direction: column; 
-  gap: 1rem; 
-  padding: 1rem; 
-  background-color: var(--light-gray); 
+  display: block; /* Changed from flex to block for vertical stacking */
+  padding: 1rem;
+  background-color: var(--card-inner-background);
   border-radius: 12px;
 }
 
-
-/* This ensures every resume card takes full width */
-.result-card:has(.resume-card:only-child) {
-  grid-template-columns: 1fr; 
-}
-
-/* Resume card Styling */
+/* Resume card styling */
 .resume-card {
   background-color: var(--card-background-color);
   padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   border-left: 5px solid var(--primary-color);
   transition: transform 0.2s ease;
   width: 100%; 
+  margin-bottom: 1.5rem;
   box-sizing: border-box; 
+}
+
+.resume-card:last-child {
+  margin-bottom: 0; 
 }
 
 .resume-card:hover {
@@ -112,14 +175,14 @@ button:hover {
   color: var(--primary-color);
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  word-break: break-word; /* this handles long filenames */
+  word-break: break-word;
 }
 
 .resume-card .ats-score {
   font-weight: bold;
   color: var(--success-color);
   margin-bottom: 1rem;
-  display: block; 
+  display: block;
 }
 
 .resume-card .ats-score.low {
@@ -135,7 +198,7 @@ button:hover {
 .resume-card ul li {
   margin: 0.6rem 0;
   padding: 0.5rem;
-  background-color: var(--background-color);
+  background-color: var(--card-inner-background);
   border: 1px solid var(--border-color);
   border-radius: 6px;
   font-size: 0.95rem;
@@ -155,10 +218,10 @@ button:hover {
   color: var(--light-text-color);
   text-align: right;
   flex: 2;
-  overflow-wrap: break-word; 
+  overflow-wrap: break-word;
 }
 
-/* Hidden Class */
+/* Hidden Class styling*/
 .hidden {
   display: none;
 }
@@ -168,7 +231,7 @@ button:hover {
   font-weight: bold;
   margin-right: 8px;
   display: inline-block;
-  width: 100px; 
+  width: 100px;
 }
 
 /* Value element styling */
@@ -176,16 +239,20 @@ button:hover {
   color: var(--text-color);
 }
 
-/* Responsive adjustments for small screens*/
+/* Responsive adjustments for different screens*/
 @media (max-width: 600px) {
   .container {
     padding: 1rem;
   }
-}
-
-
-@media (min-width: 601px) {
-  .result-card:has(.resume-card:only-child) {
-    grid-template-columns: 1fr;
+  #search-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  #skill-search, #search-btn {
+    width: 100%;
+    border-radius: 8px;
+  }
+  #search-btn {
+    margin-left: 0;
   }
 }
