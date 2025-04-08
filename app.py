@@ -1,6 +1,7 @@
 # Import required modules
 from flask import Flask, request, jsonify, render_template
 from werkzeug.utils import secure_filename
+from ai_parser import extract_ai_fields
 import os
 import re
 import docx2txt
@@ -94,7 +95,7 @@ def parse_resumes():
             filename = secure_filename(file.filename)
             file_bytes = file.read()
             text = extract_text(io.BytesIO(file_bytes), filename)
-            parsed = extract_info(text, filename)
+            parsed = extract_ai_fields(text)
             parsed["filename"] = filename
             parsed["ats_score"] = calculate_ats_score(parsed)
             results.append(parsed)

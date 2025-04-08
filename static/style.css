@@ -256,3 +256,103 @@ button:hover {
     margin-left: 0;
   }
 }
+
+
+
+/* These are styles applied on AI features*/
+
+/* Sub-heading under H1 */
+.sub-heading {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--light-text-color);
+  margin-top: -1rem;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+/* AI themed heading */
+.ai-heading {
+  color: var(--accent-color);
+  text-shadow: 2px 2px 6px var(--primary-color);
+}
+
+/* Small note text */
+.small-note {
+  font-size: 0.85rem;
+  color: var(--light-text-color);
+  font-style: italic;
+  margin-left: 0.3rem;
+}
+
+/* AI button style enhancement */
+.ai-button {
+  background-image: linear-gradient(145deg, var(--primary-color), var(--accent-color));
+  color: #fff;
+  border: none;
+  box-shadow: 0 0 10px var(--primary-color);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.ai-button:hover {
+  background-image: linear-gradient(145deg, var(--accent-color), var(--primary-color));
+  box-shadow: 0 0 15px var(--accent-color);
+  transform: scale(1.02);
+}
+
+/* Animate the AI buttons */
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 10px var(--accent-color);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--primary-color);
+  }
+  100% {
+    box-shadow: 0 0 10px var(--accent-color);
+  }
+}
+
+.ai-button {
+  animation: pulse-glow 2s infinite;
+}
+
+.ai-badge {
+  background-color: #4b9cdb;
+  color: white;
+  padding: 4px 10px;
+  font-size: 0.7rem;
+  border-radius: 6px;
+  margin-left: 8px;
+  vertical-align: middle;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.ai-credit {
+  font-size: 0.75rem;
+  text-align: center;
+  color: #666;
+  margin-top: 20px;
+  font-style: italic;
+}
+
+/* Progress bar styling for ATS score */
+.ats-score-container {
+  margin-top: 8px;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 10px;
+}
+
+.progress {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.4s ease;
+}

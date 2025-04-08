@@ -3,28 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resume Parser</title>
+  <title>AI Resume Parser</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
   <div class="container">
-    <h1>Resume Parser</h1>
+    <h1 class="ai-heading">🤖 AI Resume Parser <span class="ai-badge">AI-Powered</span></h1>
+    <p class="sub-heading">Smart ATS scoring and skill-based insights powered by spaCy NLP</p>
+
     <form id="upload-form" enctype="multipart/form-data"> 
-      <label for="resume">Upload Resume(s) (PDF or DOCX):</label>
+      <label for="resume">Upload Resume(s) <span class="small-note">(PDF or DOCX)</span>:</label>
       <input type="file" id="resume" name="resumes" accept=".pdf,.doc,.docx" multiple required>
-      <button type="submit">Upload & Parse</button>
+      <button type="submit" class="ai-button">Upload & Analyze</button>
     </form>
+
     <div id="search-container">
-      <input type="text" id="skill-search" placeholder="Search by skill...">
-      <button id="search-btn" type="button">Search</button>
+      <input type="text" id="skill-search" placeholder="Search candidates by skill...">
+      <button id="search-btn" type="button" class="ai-button">Search</button>
     </div>
-    <h2 style="text-align: center;">Extracted Information</h2>
+
     <div id="sort-controls">
-      <button id="sort-btn" type="button">Sort by ATS Score (High to Low)</button>
+      <button id="sort-btn" type="button" class="ai-button">Sort by ATS Score 🔢</button>
     </div>
-    <div id="result" class="result-card hidden">
-      <div id="parsed-data"></div>
-    </div>
+
+    <h2 style="text-align: center;">📋 Extracted Resume Insights</h2>
+
+    <div id="results-container"></div>
+
+    <footer>
+      <p class="ai-credit">🔍 Parsed intelligently using spaCy + rule-based AI</p>
+    </footer>
   </div>
 
   <script src="{{ url_for('static', filename='script.js') }}"></script>
